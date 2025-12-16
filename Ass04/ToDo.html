@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <script>
+      
+        function AddElement()
+        {
+           let input = document.getElementById("todo");
+           let task = input.value.trim();
+
+           if(task === "")
+           {
+            alert("please enter the task!!");
+            return;
+           }
+
+           let li = document.createElement("li");
+           let text = document.createTextNode(task);
+           li.appendChild(text);
+
+           let deleteBtn = document.createElement("button");
+           deleteBtn.innerText = "Delete";
+           deleteBtn.style.marginLeft = "10px";
+
+           deleteBtn.onclick = function() {
+            li.remove();
+           }
+
+           li.append(deleteBtn);
+           document.getElementById("list-container").appendChild(li);
+
+           input.value = "";
+
+        }
+    </script>
+
+        <h1>Todo List</h1> <br>
+        <div>
+            <input type="text" value="" placeholder="Enter a Todo" id="todo">
+            <button onclick="AddElement()" >Add</button>
+       </div>
+       <ol id = "list-container"></ol>
+        
+</body>
+</html>
